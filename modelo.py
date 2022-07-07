@@ -30,27 +30,29 @@ class Programa:
     def dar_likes(self):
         self._likes += 1
 
+    def imprime(self):
+        print(f"{self._nome} - {self._ano} - {self._likes} likes")
+
 
 class Filme(Programa):
 
     def __init__(self, nome: str, ano: int, duracao: int):
-        self._nome = nome.title()
-        self._ano = ano
+        super().__init__(nome, ano)
         self._duracao = duracao
-        self._likes = 0
 
     @property
     def duracao(self):
         return self._duracao
 
+    def imprime(self):
+        print(f"{self._nome} - {self._ano} - {self._duracao} min - {self._likes} likes")
+
 
 class Serie(Programa):
 
     def __init__(self, nome: str, ano: int, temporada: int):
-        self._nome = nome.title()
-        self._ano = ano
+        super().__init__(nome, ano)
         self._temporada = temporada
-        self._likes = 0
 
     # getters
 
@@ -58,24 +60,30 @@ class Serie(Programa):
     def temporada(self):
         return self._temporada
 
+    def imprime(self):
+        print(f"{self._nome} - {self._ano} - {self._temporada} temporadas - {self._likes} likes")
+
 
 vingadores = Filme("Vingadores guerra infinita", 1981, 160)
-print(f"Nome: {vingadores.nome}, Ano: {vingadores.ano}, Duração: {vingadores.duracao} min, likes: {vingadores.likes}")
 
 vingadores.dar_likes()
-print("----------> reload")
 
-print(f"Nome: {vingadores.nome}, Ano: {vingadores.ano}, Duração: {vingadores.duracao} min, likes: {vingadores.likes}")
-
+print(f"{vingadores.nome} - {vingadores.duracao} - {vingadores.likes}")
 print("---------------------------------------------")
 
 atlanta = Serie("Serie atlanta", 1967, 1)
 
-# imprimir utilizando formatação do python 3.6 em diante
-print(f"Nome: {atlanta.nome}, Ano: {atlanta.ano}, Temporada: {atlanta.temporada}, likes: {atlanta.likes}")
-
 atlanta.dar_likes()
 atlanta.dar_likes()
-print("----------> reload")
 
-print(f"Nome: {atlanta.nome}, Ano: {atlanta.ano}, Temporada: {atlanta.temporada}, likes: {atlanta.likes}")
+print(f"{atlanta.nome} - {atlanta.temporada} - {atlanta.likes}")
+
+print("---------------------------------------------")
+
+filmes_series = [vingadores, atlanta]
+print(filmes_series)
+
+for programa in filmes_series:
+
+    programa.imprime()
+
