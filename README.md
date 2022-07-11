@@ -33,3 +33,26 @@ class Filme(Programa):
         self._duracao = duracao
 
 ```
+
+## Encapsulando comportamentos
+
+* Definindo atributos como protegidos  _ (underscore)
+* Isto significa que o atributo não está realmente privado, sendo acessível pelas classes filhas
+
+```
+class Programa:
+
+    def __init__(self, nome: str, ano: int):
+        self._nome = nome.title()
+        self._ano = ano
+        self._likes = 0
+
+```
+
+* herança traz muito acoplamento
+* e um
+
+
+## Composição e reuso
+
+* tem um
